@@ -8,7 +8,7 @@ wireguard homepage: www.wireguard.com
 Ubuntu 18.04 installed
 
 * dnsmasq (or the like) installed for DNS forwarding
-* add `net.ipv4.ip_forward = 1` into `/etc/sysctl.conf` file
+* `net.ipv4.ip_forward = 1` presents in `/etc/sysctl.conf` file
 
 ## Defaults
 
