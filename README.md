@@ -15,7 +15,7 @@ Ubuntu 18.04 installed
 * Listen host: Public IP address
 * Listen port: `UDP/51820`
 * Tunnel network: `10.0.0.0/24`
-* Create users those listed in vars/main.yml with fields:
+* Create users those listed in `vars/main.yml` with fields:
   *  username: username
   *  private_ip: private IP address to be assigned on Wireguard tunnel
   *  default_route: yes if user is allowed to use VPN as default route
@@ -26,7 +26,7 @@ Ubuntu 18.04 installed
 
 Create an Ansible playbook with below content
 
-```
+```yml
 - hosts: all
   gather_facts: yes
   become: yes
@@ -37,7 +37,7 @@ Create an Ansible playbook with below content
 
 Run ansible
 
-```
+```sh
 $ ansible-playbook -i hosts main.yml
 ```
 
