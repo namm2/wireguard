@@ -1,0 +1,3 @@
+---
+wg_user_list:
+  user_1: { username: "user_1", private_ip: "10.0.0.11", default_route: yes, wg_dns_enabled: yes, remove: no }

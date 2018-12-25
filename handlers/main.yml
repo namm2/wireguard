@@ -1,0 +1,12 @@
+- name: start wg0
+  systemd:
+    name: "wg-quick@wg0"
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+- name: restart wg0
+  systemd:
+    name: "wg-quick@wg0"
+    state: restarted
+    daemon_reload: yes

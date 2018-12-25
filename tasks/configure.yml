@@ -1,0 +1,37 @@
+---
+- name: Create wireguard config dir
+  file:
+    path: "/etc/wireguard"
+    state: directory
+  register: wg_conf_dir
+
+- name: Generate wireguard server keypair
+  shell: |
+    if [ ! -f {{ wg_conf_dir.path }}/privatekey ]
+     then
+      umask 077 && wg genkey | tee {{ wg_conf_dir.path }}/privatekey | wg pubkey > {{ wg_conf_dir.path }}/publickey
+    fi
+    exit 0
+
+- name: Get wireguard private key
+  slurp:
+    src: "{{ wg_conf_dir.path }}/privatekey"
+  register: wg_privatekey
+
+# - debug: 
+#     msg: "{{ wg_privatekey['content'] }}"
+
+- name: Get wireguard public key
+  slurp:
+    src: "{{ wg_conf_dir.path }}/publickey"
+  register: wg_publickey
+
+- name: Get wireguard server public IPv4
+  uri: 
+    url: "http://169.254.169.254/latest/meta-data/public-ipv4"
+    remote_src: yes
+    return_content: yes
+  register: wg_public_ipv4
+
+# - debug:
+#     msg: "{{ wg_public_ipv4['content'] }}"

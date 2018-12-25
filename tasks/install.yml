@@ -1,0 +1,17 @@
+---
+- name: Update aptitude
+  apt:
+    upgrade: full
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes
+
+- name: Add wireguard repository
+  apt_repository:
+    repo: "ppa:wireguard/wireguard"
+    state: present
+
+- name: Install wireguard
+  apt:
+    name: "wireguard"
+    state: present
