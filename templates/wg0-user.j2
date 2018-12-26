@@ -1,11 +1,11 @@
 [Interface]
 Address = {{ item.item.value.private_ip }}/24
-PrivateKey = {{ item['content'] | b64decode }}
+PrivateKey = {{ item['content'] | b64decode | replace('\n', '')}}
 {% if item.item.value.wg_dns_enabled %}
 DNS = {{ wg_private_ip }}
 {% endif %}
 
 [Peer]
-PublicKey = {{ wg_publickey['content'] | b64decode}}
-Endpoint = {{ wg_public_ipv4['content'] }}:51820
+PublicKey = {{ wg_publickey['content'] | b64decode | replace('\n', '')}}
+Endpoint = {{ wg_public_ipv4['content'] | replace('\n', '')}}:51820
 AllowedIPs = {{ wg_allowed_ips }}

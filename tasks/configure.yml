@@ -28,7 +28,7 @@
 
 - name: Get wireguard server public IPv4
   uri: 
-    url: "http://169.254.169.254/latest/meta-data/public-ipv4"
+    url: "https://ipinfo.io/ip"
     remote_src: yes
     return_content: yes
   register: wg_public_ipv4
