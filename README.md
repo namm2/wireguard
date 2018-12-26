@@ -4,9 +4,7 @@ wireguard homepage: www.wireguard.com
 
 ## Prerequisites
 
-* An EC2 instance with public IP address (prefer Elastic IP), with
-Ubuntu 18.04 installed
-
+* A VPS which got Ubuntu Linux installed, and a public IP address.
 * dnsmasq (or the like) installed for DNS forwarding
 * `net.ipv4.ip_forward = 1` presents in `/etc/sysctl.conf` file
 
