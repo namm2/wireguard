@@ -2,8 +2,8 @@
 Address = {{ wg_private_ip }}/24
 PrivateKey = {{ wg_privatekey['content'] | b64decode | replace('\n', '')}}
 ListenPort = {{ wg_listen_port }}
-PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o {{ ansible_default_ipv4.interface }} -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o {{ ansible_default_ipv4.interface }} -j MASQUERADE
 
 {% for item in wg_user_publickey.results %}
 {% if item.item.value.remove == False %}
