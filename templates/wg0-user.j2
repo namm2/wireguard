@@ -7,5 +7,5 @@ DNS = {{ wg_private_ip }}
 
 [Peer]
 PublicKey = {{ wg_publickey['content'] | b64decode | replace('\n', '')}}
-Endpoint = {{ wg_public_ipv4['content'] | replace('\n', '')}}:51820
+Endpoint = {{ wg_public_ipv4['content'] | replace('\n', '')}}:{{ wg_listen_port }}
 AllowedIPs = {{ wg_allowed_ips }}
