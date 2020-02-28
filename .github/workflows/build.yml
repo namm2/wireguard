@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  pull_request
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+        helm-version: [v2.16.3]
+
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
+
+    - name: Install Helm ${{ matrix.helm-version }}
+      uses: azure/setup-helm@v1
+      with:
+        version: ${{ matrix.helm-version }}
+      id: install
+    - name: Setup Helm client
+      run: helm init -c
+
+    - name: Setup Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+  
