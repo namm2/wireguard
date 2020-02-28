@@ -12,4 +12,4 @@ jobs:
     - name: Install YAMLlint
       run: sudo apt install -y yamllint
     - name: Linting YAML files
-      run: yamllint ./
+      run: yamllint ${GITHUB_EVENT_PATH}
