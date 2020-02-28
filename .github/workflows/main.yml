@@ -10,6 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install YAMLlint
-      run: apt install yamllint
+      run: sudo apt install -y yamllint
     - name: Linting YAML files
       run: yamllint ./
