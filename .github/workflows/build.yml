@@ -12,11 +12,12 @@ jobs:
   build:
     if: jobs.run-test.status == 'success'
     runs-on: ubuntu-latest
+    env:
+      TAGS: ${{GITHUB_REF##*/}}
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Run tests
-        run: docker build ./ -t ${{ TAGS }}
-        env:
-          TAGS: ${GITHUB_REF##*/}
+        run: docker build ./ -t ${TAGS}
+        
