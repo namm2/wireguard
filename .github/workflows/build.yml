@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    if: success()job.status
+    if: success()
     runs-on: ubuntu-latest
 
     steps:
