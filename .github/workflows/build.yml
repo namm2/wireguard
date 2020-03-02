@@ -1,17 +1,24 @@
-name: Build
+name: Docker
 
 on:
-  push:
-    tags: 
-      - '*'
   pull_request:
+    # Publish `master` as Docker `latest` image.
     branches:
-      - 'master'
-  
+      - master
+  tags:
+    - '*'
+
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: image
+
 jobs:
   build:
+    if: jobs.run-test.status == 'success'
     runs-on: ubuntu-latest
 
     steps:
-    - name: Git checkout
-      uses: actions/checkout@v2  
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: docker build ./ -t ${{ IMAGE_NAME }}
