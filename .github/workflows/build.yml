@@ -19,4 +19,4 @@ jobs:
       - name: Run tests
         run: docker build ./ -t ${{ IMAGE_NAME }}
         env:
-          IMAGE_NAME: ${{ GITHUB_REF:11 }}
+          IMAGE_NAME: ${GITHUB_REF##*/}
