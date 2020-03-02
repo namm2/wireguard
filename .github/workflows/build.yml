@@ -9,6 +9,11 @@ on:
       - 'master'
 
 jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - id: step-test
+        run: echo 'Hello World!'
   build:
     needs: run-test
     runs-on: ubuntu-latest
