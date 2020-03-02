@@ -1,14 +1,8 @@
 name: Docker
+env:
+  fsf: fsdfs
 
-on:
-  push:
-    branches:
-      - '*'
-    tags:
-      - '*'
-  pull_request:
-    branches:
-      - 'master'
+on: [push, pull_request]
 
 jobs:
   run-test:
