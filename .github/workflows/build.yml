@@ -11,14 +11,16 @@ on:
       - 'master'
 
 jobs:
-  build:
-    needs: run-test
+  run-test:
     runs-on: ubuntu-latest
-
+    steps:
+      - run: echo ${GITHUB_REF}
+  build:
+    needs: [run-test]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Build docker image $fsf
-#         if: job.run-test == 'success'
         run: docker build ./ -t hectopus:${GITHUB_REF:11}
         
