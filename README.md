@@ -20,7 +20,7 @@ wireguard homepage: www.wireguard.com
   *  wg_dns_enabled: yes if user is allowed to use server DNS resolver
   *  remove: no (yes if user is marked to be deleted)
 
-## Example
+## Example #12
 
 Create an Ansible playbook with below content
 
