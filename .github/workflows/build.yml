@@ -4,11 +4,10 @@ env:
 
 on:
   push:
+    branches: 
+      - '*'
     tags: 
       - '*'
-  pull_request:
-    branches: 
-      - 'master'
 
 jobs:
   run-test:
@@ -21,6 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build docker image $fsf
+      - name: Build docker image ${fsf}
         run: docker build ./ -t hectopus:${GITHUB_REF##*/}
         
