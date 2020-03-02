@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    if: job.run-test is success()
+    if: ${{ job.run-test.status == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
