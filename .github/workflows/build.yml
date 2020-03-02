@@ -21,6 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run tests
-        run: docker build ./ -t ${GITHUB_BASE_REF}
+      - name: Build docker image
+        run: docker build ./ -t ${GITHUB_REF:11}
         
