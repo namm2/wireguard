@@ -22,8 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          pip install GitPython
+      - uses: trilom/file-changes-action@v1
 
 #       - name: Build docker image ${fsf}
 #         run: docker build ./ -t hectopus:${GITHUB_REF##*/}
