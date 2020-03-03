@@ -2,12 +2,7 @@ name: Docker
 env:
   fsf: fsdfs
 
-on:
-  push:
-    branches: 
-      - '*'
-    tags: 
-      - '*'
+on: push
 
 jobs:
   run-test:
