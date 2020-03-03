@@ -27,7 +27,7 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
       - run: |
-          echo '${{ steps.files_change.outputs.files }}'
+          echo ${{ steps.files_change.outputs.files_modified}}
         
 #       - name: Build docker image ${fsf}
 #         run: docker build ./ -t hectopus:${GITHUB_REF##*/}
