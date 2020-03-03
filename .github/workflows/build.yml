@@ -22,9 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: trilom/file-changes-action@v1
+      - id: files_change
+        uses: trilom/file-changes-action@v1
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          echo '${{ steps.files_change.outputs.files }}'
         
 #       - name: Build docker image ${fsf}
 #         run: docker build ./ -t hectopus:${GITHUB_REF##*/}
