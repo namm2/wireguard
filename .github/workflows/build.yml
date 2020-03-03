@@ -18,7 +18,7 @@ jobs:
         with:
           config_file: .yamllint.yaml
   build:
-    needs: [run-test]
+#     needs: [run-test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
