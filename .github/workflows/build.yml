@@ -22,15 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - shell: bash
-        run: |
-          git=$(which git) && \
-          $git --no-pager diff --name-only $GITHUB_REF##*/..$GITHUB_HEAD_REF
       - run: |
-          for i in $(git --no-pager diff --name-only ${GITHUB_REF##*/}..${GITHUB_BASE_REF} | egrep -v "^docs/|^modules/|^scripts/")
-          do 
-            dirname $i
-          done | sort -u 
+          pip install GitPython
+
 #       - name: Build docker image ${fsf}
 #         run: docker build ./ -t hectopus:${GITHUB_REF##*/}
         
