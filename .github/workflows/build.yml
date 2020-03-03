@@ -23,6 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
+          which git
           git --no-pager diff --name-only ${GITHUB_REF##*/}..${GITHUB_BASE_REF} 
       - run: |
           for i in $(git --no-pager diff --name-only ${GITHUB_REF##*/}..${GITHUB_BASE_REF} | egrep -v "^docs/|^modules/|^scripts/")
