@@ -23,7 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: trilom/file-changes-action@v1
-
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+        
 #       - name: Build docker image ${fsf}
 #         run: docker build ./ -t hectopus:${GITHUB_REF##*/}
         
