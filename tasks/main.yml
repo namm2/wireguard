@@ -5,5 +5,9 @@
 - include_tasks: configure.yml
   tags: configure
 
+- include_tasks: system.yml
+  tags: system
+
+
 - include_tasks: users.yml
   tags: wg_users
